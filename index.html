@@ -41,8 +41,14 @@
         document.body.appendChild(renderer.domElement)
         const controls = new OrbitControls(camera, renderer.domElement)
 
-        const redMaterial = new THREE.MeshBasicMaterial({ color: "red", opacity: 0.5, transparent: true })
-        const blueMaterial = new THREE.MeshBasicMaterial({ color: "blue", opacity: 0.5, transparent: true })
+        const light = new THREE.PointLight("white", 20, 10)
+        light.position.z = 2
+        light.position.y = 1
+
+        scene.add(light)
+
+        const redMaterial = new THREE.MeshStandardMaterial({ color: "red", opacity: 0.5, transparent: true, side: THREE.DoubleSide })
+        const blueMaterial = new THREE.MeshStandardMaterial({ color: "blue", opacity: 0.5, transparent: true, side: THREE.DoubleSide })
 
         const geometry = new THREE.BoxGeometry(1, 1, 1)
 
